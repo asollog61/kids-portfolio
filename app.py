@@ -320,6 +320,23 @@ st.markdown(
         [data-testid="stMetricValue"] { font-size: 1.3rem !important; }
         [data-testid="stMetricLabel"] { font-size: 0.8rem !important; }
         [data-testid="stMetricDelta"] { font-size: 0.75rem !important; }
+
+        /* Mobile position cards */
+        .pos-card {
+            background: #1a1a2e;
+            border-radius: 10px;
+            padding: 12px 16px;
+            margin-bottom: 8px;
+            border-left: 4px solid #333;
+        }
+        .pos-card.positive { border-left-color: #44dd44; }
+        .pos-card.negative { border-left-color: #ff4444; }
+        .pos-card .sym { font-size: 1.1rem; font-weight: bold; color: #e0e0e0; }
+        .pos-card .row { display: flex; justify-content: space-between; margin-top: 4px; }
+        .pos-card .label { color: #888; font-size: 0.8rem; }
+        .pos-card .val { color: #e0e0e0; font-size: 0.9rem; }
+        .pos-card .green { color: #44dd44; }
+        .pos-card .red { color: #ff4444; }
     </style>
     """,
     unsafe_allow_html=True,
@@ -480,13 +497,47 @@ with holdings_tab:
             col_a.metric("Account Value", _fmt_money(totals["value"]))
             col_b.metric("Total P&L", _fmt_money(totals["pl"]), delta=_fmt_pct(total_pct))
             st.divider()
-            _render_table(
-                table,
-                height=700,
-                pinned_row=context["total_row"],
-                key="positions_grid",
-                highlight_cols=["P&L", "P&L %", "Today"],
-            )
+
+            view_mode = st.radio("View", ["Cards", "Table"], horizontal=True, key="pos_view", label_visibility="collapsed")
+
+            if view_mode == "Cards":
+                for _, r in table.iterrows():
+                    sym = r.get("Symbol", "")
+                    if sym == "CASH" and r.get("Value", "") == "":
+                        continue
+                    pl_str = r.get("P&L", "")
+                    is_pos = pl_str and not pl_str.startswith("(") and pl_str != "" and pl_str != "$0.00"
+                    is_neg = pl_str.startswith("(") if pl_str else False
+                    css_class = "positive" if is_pos else ("negative" if is_neg else "")
+                    pl_color = "green" if is_pos else ("red" if is_neg else "val")
+                    today_str = r.get("Today", "")
+                    today_color = "green" if today_str.startswith("+") else ("red" if today_str.startswith("-") else "val")
+
+                    st.markdown(f"""
+                    <div class="pos-card {css_class}">
+                        <div class="sym">{sym}</div>
+                        <div class="row">
+                            <div><span class="label">Qty</span> <span class="val">{r.get('Qty','')}</span></div>
+                            <div><span class="label">Price</span> <span class="val">{r.get('Price','')}</span></div>
+                        </div>
+                        <div class="row">
+                            <div><span class="label">Value</span> <span class="val">{r.get('Value','')}</span></div>
+                            <div><span class="label">Cost</span> <span class="val">{r.get('Cost','')}</span></div>
+                        </div>
+                        <div class="row">
+                            <div><span class="label">P&L</span> <span class="{pl_color}">{pl_str} {r.get('P&L %','')}</span></div>
+                            <div><span class="label">Today</span> <span class="{today_color}">{today_str}</span></div>
+                        </div>
+                    </div>
+                    """, unsafe_allow_html=True)
+            else:
+                _render_table(
+                    table,
+                    height=700,
+                    pinned_row=context["total_row"],
+                    key="positions_grid",
+                    highlight_cols=["P&L", "P&L %", "Today"],
+                )
             st.caption(f"{len(table)} holdings")
 
     with transactions_subtab:
