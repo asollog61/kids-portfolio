@@ -211,7 +211,7 @@ def _fix_price_columns(df: pd.DataFrame) -> pd.DataFrame:
 # ---------------------------------------------------------------------------
 # Data loaders
 # ---------------------------------------------------------------------------
-@st.cache_data(show_spinner=False)
+@st.cache_data(show_spinner=False, ttl=300)
 def load_positions() -> pd.DataFrame:
     path = _latest_file("Portfolio_Positions_*.csv")
     if not path:
@@ -223,7 +223,7 @@ def load_positions() -> pd.DataFrame:
     return df
 
 
-@st.cache_data(show_spinner=False)
+@st.cache_data(show_spinner=False, ttl=300)
 def load_activity() -> pd.DataFrame:
     path = _latest_file("Activity_All_Accounts*.csv")
     if not path:
@@ -254,7 +254,7 @@ def load_activity() -> pd.DataFrame:
     return df
 
 
-@st.cache_data(show_spinner=False)
+@st.cache_data(show_spinner=False, ttl=300)
 def load_price_book():
     excel_path = DATA_DIR / "prices_dividends_adjusted.xlsx"
     if not excel_path.exists():
