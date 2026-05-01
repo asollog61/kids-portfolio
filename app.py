@@ -469,7 +469,7 @@ def _render_table(
             theme="alpine-dark",
             allow_unsafe_jscode=True,
             update_mode=GridUpdateMode.NO_UPDATE,
-            height=min(height, 40 + 34 * len(df)),
+            height=height,
             key=key,
         )
     else:
