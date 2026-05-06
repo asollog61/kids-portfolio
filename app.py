@@ -381,28 +381,60 @@ def _transactions_for_account(account: str) -> pd.DataFrame:
     return df
 
 
+def _price_at_offset(adj_close: pd.DataFrame, ticker: str, latest_date, delta_days: int) -> float | None:
+    """Get the closest price on or before (latest_date - delta_days)."""
+    target = latest_date - pd.Timedelta(days=delta_days)
+    if ticker not in adj_close.columns:
+        return None
+    series = adj_close[ticker].dropna()
+    prior = series[series.index <= target]
+    if prior.empty:
+        return None
+    return float(prior.iloc[-1])
+
+
 def _build_positions_table(df: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
     rows = []
-    
-    # Get latest prices from price book if available
+
+    # Get latest prices and historical lookbacks from price book
     latest_prices = {}
+    price_1d = {}
+    price_1w = {}
+    price_1m = {}
+    adj_close = None
+    latest_date = None
+
     if PRICE_BOOK and not PRICE_BOOK["adj"].empty:
         adj_close = PRICE_BOOK["adj"]
         latest_date = adj_close.index.max()
         for ticker in adj_close.columns:
             price_series = adj_close[ticker].dropna()
             if not price_series.empty:
-                latest_prices[ticker.upper()] = price_series.iloc[-1]
-    
+                tk = ticker.upper()
+                latest_prices[tk] = price_series.iloc[-1]
+                p1d = _price_at_offset(adj_close, ticker, latest_date, 1)
+                p1w = _price_at_offset(adj_close, ticker, latest_date, 7)
+                p1m = _price_at_offset(adj_close, ticker, latest_date, 30)
+                if p1d is not None:
+                    price_1d[tk] = p1d
+                if p1w is not None:
+                    price_1w[tk] = p1w
+                if p1m is not None:
+                    price_1m[tk] = p1m
+
     for _, row in df.iterrows():
         symbol = str(row.get("Symbol", "")).strip()
         if not symbol or symbol.upper() == "PENDING ACTIVITY":
             continue
-        
+
         is_cash = "**" in symbol
         quantity = _clean_number(row.get("Quantity"))
         cost_total = _clean_money(row.get("Cost Basis Total"))
-        
+
+        chg_1d = None
+        chg_1w = None
+        chg_1m = None
+
         # For cash positions, use Fidelity's value directly
         if is_cash:
             current_value = _clean_money(row.get("Current Value"))
@@ -411,25 +443,26 @@ def _build_positions_table(df: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
             price = None
             gl_total = 0
             gl_pct = 0
-            today_pct = 0
         else:
-            # For securities: use price book if available, else fall back to Fidelity
             symbol_upper = symbol.upper()
             if symbol_upper in latest_prices and quantity and not np.isnan(quantity):
-                # Calculate from price book
                 price = latest_prices[symbol_upper]
                 current_value = quantity * price
                 gl_total = current_value - (cost_total if cost_total and not np.isnan(cost_total) else 0)
                 gl_pct = (gl_total / cost_total * 100) if (cost_total and cost_total != 0) else 0
-                # No intraday data in xlsx, so today is blank
-                today_pct = None
+
+                # Period P&L = Qty * (current_price - historical_price)
+                if symbol_upper in price_1d:
+                    chg_1d = quantity * (price - price_1d[symbol_upper])
+                if symbol_upper in price_1w:
+                    chg_1w = quantity * (price - price_1w[symbol_upper])
+                if symbol_upper in price_1m:
+                    chg_1m = quantity * (price - price_1m[symbol_upper])
             else:
-                # Fall back to Fidelity data
                 current_value = _clean_money(row.get("Current Value"))
                 price = _clean_money(row.get("Last Price"))
                 gl_total = _clean_money(row.get("Total Gain/Loss Dollar"))
                 gl_pct = _clean_number(str(row.get("Total Gain/Loss Percent", "")).replace("%", ""))
-                today_pct = _clean_number(str(row.get("Today's Gain/Loss Percent", "")).replace("%", ""))
 
         display_symbol = "CASH" if is_cash else symbol
         rows.append(
@@ -441,10 +474,15 @@ def _build_positions_table(df: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
                 "Value": _fmt_money(current_value),
                 "P&L": _fmt_money(gl_total),
                 "P&L %": _fmt_pct(gl_pct),
-                "Today": _fmt_pct(today_pct) if today_pct is not None else "",
+                "1D": _fmt_money(chg_1d) if chg_1d is not None else "",
+                "1W": _fmt_money(chg_1w) if chg_1w is not None else "",
+                "1M": _fmt_money(chg_1m) if chg_1m is not None else "",
                 "_value": current_value or 0,
                 "_cost": cost_total or 0,
                 "_pl": gl_total or 0,
+                "_1d": chg_1d or 0,
+                "_1w": chg_1w or 0,
+                "_1m": chg_1m or 0,
             }
         )
 
@@ -456,8 +494,11 @@ def _build_positions_table(df: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
         "value": table["_value"].sum(),
         "pl": table["_pl"].sum(),
         "cost": table["_cost"].sum(),
+        "1d": table["_1d"].sum(),
+        "1w": table["_1w"].sum(),
+        "1m": table["_1m"].sum(),
     }
-    table = table.drop(columns=["_value", "_cost", "_pl"])
+    table = table.drop(columns=["_value", "_cost", "_pl", "_1d", "_1w", "_1m"])
     total_pct = (totals["pl"] / totals["cost"] * 100) if totals["cost"] else 0
     total_row = {
         "Symbol": "TOTAL",
@@ -467,7 +508,9 @@ def _build_positions_table(df: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
         "Value": _fmt_money(totals["value"]),
         "P&L": _fmt_money(totals["pl"]),
         "P&L %": _fmt_pct(total_pct),
-        "Today": "",
+        "1D": _fmt_money(totals["1d"]),
+        "1W": _fmt_money(totals["1w"]),
+        "1M": _fmt_money(totals["1m"]),
     }
     return table, {"totals": totals, "total_row": total_row, "total_pct": total_pct}
 
@@ -545,6 +588,19 @@ with holdings_tab:
                     today_str = r.get("Today", "")
                     today_color = "green" if today_str.startswith("+") else ("red" if today_str.startswith("-") else "val")
 
+                    def _card_color(val_str):
+                        if not val_str:
+                            return "val"
+                        if val_str.startswith("(") or val_str.startswith("-"):
+                            return "red"
+                        if any(c.isdigit() for c in val_str) and val_str != "$0.00":
+                            return "green"
+                        return "val"
+
+                    d1 = r.get('1D', '')
+                    w1 = r.get('1W', '')
+                    m1 = r.get('1M', '')
+
                     st.markdown(f"""
                     <div class="pos-card {css_class}">
                         <div class="sym">{sym}</div>
@@ -558,7 +614,11 @@ with holdings_tab:
                         </div>
                         <div class="row">
                             <div><span class="label">P&L</span> <span class="{pl_color}">{pl_str} {r.get('P&L %','')}</span></div>
-                            <div><span class="label">Today</span> <span class="{today_color}">{today_str}</span></div>
+                        </div>
+                        <div class="row">
+                            <div><span class="label">1D</span> <span class="{_card_color(d1)}">{d1}</span></div>
+                            <div><span class="label">1W</span> <span class="{_card_color(w1)}">{w1}</span></div>
+                            <div><span class="label">1M</span> <span class="{_card_color(m1)}">{m1}</span></div>
                         </div>
                     </div>
                     """, unsafe_allow_html=True)
@@ -568,7 +628,7 @@ with holdings_tab:
                     height=700,
                     pinned_row=context["total_row"],
                     key="positions_grid",
-                    highlight_cols=["P&L", "P&L %", "Today"],
+                    highlight_cols=["P&L", "P&L %", "1D", "1W", "1M"],
                 )
             st.caption(f"{len(table)} holdings")
 
