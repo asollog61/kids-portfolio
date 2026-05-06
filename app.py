@@ -383,21 +383,53 @@ def _transactions_for_account(account: str) -> pd.DataFrame:
 
 def _build_positions_table(df: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
     rows = []
+    
+    # Get latest prices from price book if available
+    latest_prices = {}
+    if PRICE_BOOK and not PRICE_BOOK["adj"].empty:
+        adj_close = PRICE_BOOK["adj"]
+        latest_date = adj_close.index.max()
+        for ticker in adj_close.columns:
+            price_series = adj_close[ticker].dropna()
+            if not price_series.empty:
+                latest_prices[ticker.upper()] = price_series.iloc[-1]
+    
     for _, row in df.iterrows():
         symbol = str(row.get("Symbol", "")).strip()
         if not symbol or symbol.upper() == "PENDING ACTIVITY":
             continue
-        current_value = _clean_money(row.get("Current Value"))
-        quantity = _clean_number(row.get("Quantity"))
-        price = _clean_money(row.get("Last Price"))
-        cost_total = _clean_money(row.get("Cost Basis Total"))
-        gl_total = _clean_money(row.get("Total Gain/Loss Dollar"))
-        gl_pct = _clean_number(str(row.get("Total Gain/Loss Percent", "")).replace("%", ""))
-        today_pct = _clean_number(str(row.get("Today's Gain/Loss Percent", "")).replace("%", ""))
-
+        
         is_cash = "**" in symbol
-        if is_cash and (current_value is None or np.isnan(current_value)):
-            continue
+        quantity = _clean_number(row.get("Quantity"))
+        cost_total = _clean_money(row.get("Cost Basis Total"))
+        
+        # For cash positions, use Fidelity's value directly
+        if is_cash:
+            current_value = _clean_money(row.get("Current Value"))
+            if current_value is None or np.isnan(current_value):
+                continue
+            price = None
+            gl_total = 0
+            gl_pct = 0
+            today_pct = 0
+        else:
+            # For securities: use price book if available, else fall back to Fidelity
+            symbol_upper = symbol.upper()
+            if symbol_upper in latest_prices and quantity and not np.isnan(quantity):
+                # Calculate from price book
+                price = latest_prices[symbol_upper]
+                current_value = quantity * price
+                gl_total = current_value - (cost_total if cost_total and not np.isnan(cost_total) else 0)
+                gl_pct = (gl_total / cost_total * 100) if (cost_total and cost_total != 0) else 0
+                # No intraday data in xlsx, so today is blank
+                today_pct = None
+            else:
+                # Fall back to Fidelity data
+                current_value = _clean_money(row.get("Current Value"))
+                price = _clean_money(row.get("Last Price"))
+                gl_total = _clean_money(row.get("Total Gain/Loss Dollar"))
+                gl_pct = _clean_number(str(row.get("Total Gain/Loss Percent", "")).replace("%", ""))
+                today_pct = _clean_number(str(row.get("Today's Gain/Loss Percent", "")).replace("%", ""))
 
         display_symbol = "CASH" if is_cash else symbol
         rows.append(
@@ -409,7 +441,7 @@ def _build_positions_table(df: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
                 "Value": _fmt_money(current_value),
                 "P&L": _fmt_money(gl_total),
                 "P&L %": _fmt_pct(gl_pct),
-                "Today": _fmt_pct(today_pct),
+                "Today": _fmt_pct(today_pct) if today_pct is not None else "",
                 "_value": current_value or 0,
                 "_cost": cost_total or 0,
                 "_pl": gl_total or 0,
