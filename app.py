@@ -615,7 +615,7 @@ with holdings_tab:
                         <div class="row">
                             <div><span class="label">P&L</span> <span class="{pl_color}">{pl_str} {r.get('P&L %','')}</span></div>
                         </div>
-                        <div class="row">
+                        <div style="margin-top:4px;">
                             <div><span class="label">1D</span> <span class="{_card_color(d1)}">{d1}</span></div>
                             <div><span class="label">1W</span> <span class="{_card_color(w1)}">{w1}</span></div>
                             <div><span class="label">1M</span> <span class="{_card_color(m1)}">{m1}</span></div>
