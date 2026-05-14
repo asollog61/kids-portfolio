@@ -1,0 +1,28 @@
+﻿"Activity 
+All Accounts 
+as of 05/13/2026 at 04:13:10 PM"
+
+Date,Description,Quantity,Symbol,Price,Amount,Cash Balance,Security Description,Commission,Fees,Account,Type
+May-13-2026,YOU BOUGHT OPENING TRANSACTION,2,SPXW260513C7470,0.92,-186.03,Processing,CALL (SPXW) NEW S & P 500 INDEX MAY 13 26 $7470 (100 SHS),1.98,0.05,Limited Liability Company *9613,Margin
+May-13-2026,YOU SOLD CLOSING TRANSACTION,-2,SPXW260513C7450,8.92,"1,781.97",Processing,CALL (SPXW) NEW S & P 500 INDEX MAY 13 26 $7450 (100 SHS),1.98,0.05,Limited Liability Company *9613,Margin
+May-13-2026,YOU BOUGHT OPENING TRANSACTION,6,SPXW260513C7450,4.99,"-3,000.07",Processing,CALL (SPXW) NEW S & P 500 INDEX MAY 13 26 $7450 (100 SHS),5.93,0.14,Limited Liability Company *9613,Margin
+May-13-2026,YOU SOLD OPENING TRANSACTION,-9,SPXW260513C7460,2.11,"1,889.90",Processing,CALL (SPXW) NEW S & P 500 INDEX MAY 13 26 $7460 (100 SHS),8.89,0.21,Limited Liability Company *9613,Margin
+May-13-2026,YOU SOLD OPENING TRANSACTION,-3,SPXW260608C7225,285.36,"85,604.97",Processing,CALL (SPXW) NEW S & P 500 INDEX JUN 08 26 $7225 (100 SHS),2.96,0.07,Limited Liability Company *9613,Margin
+May-13-2026,YOU BOUGHT CLOSING TRANSACTION,3,SPX260515C7125,326.36,"-97,911.03",Processing,CALL (SPX) NEW S & P 500 INDEX MAY 15 26 $7125 (100 SHS),2.96,0.07,Limited Liability Company *9613,Margin
+May-13-2026,YOU SOLD OPENING TRANSACTION,-9,SPXW260513P7415,2.32,"2,078.90",Processing,PUT (SPXW) NEW S & P 500 INDEX MAY 13 26 $7415 (100 SHS),8.89,0.21,Limited Liability Company *9613,Margin
+May-13-2026,YOU BOUGHT OPENING TRANSACTION,6,SPXW260513P7430,5.23,"-3,144.07",Processing,PUT (SPXW) NEW S & P 500 INDEX MAY 13 26 $7430 (100 SHS),5.93,0.14,Limited Liability Company *9613,Margin
+May-13-2026,YOU BOUGHT OPENING TRANSACTION,5,SPXW260514C7400,31.18,"-15,595.06",Processing,CALL (SPXW) NEW S & P 500 INDEX MAY 14 26 $7400 (100 SHS),4.94,0.12,Limited Liability Company *9613,Margin
+May-13-2026,YOU SOLD OPENING TRANSACTION,-10,SPXW260514C7430,14.94,"14,929.89",Processing,CALL (SPXW) NEW S & P 500 INDEX MAY 14 26 $7430 (100 SHS),9.88,0.23,Limited Liability Company *9613,Margin
+May-13-2026,EXPIRED PUT (SPXW) NEW S & P 500 INDEX MAY 12 26 $7350,50,SPXW260512P7350,--,--,Processing,PUT (SPXW) NEW S & P 500 INDEX MAY 12 26 $7350 (100 SHS),--,--,Limited Liability Company *9613,Margin
+May-13-2026,EXPIRED PUT (SPXW) NEW S & P 500 INDEX MAY 12 26 $7365,-50,SPXW260512P7365,--,--,Processing,PUT (SPXW) NEW S & P 500 INDEX MAY 12 26 $7365 (100 SHS),--,--,Limited Liability Company *9613,Margin
+,Totals,,,,"  -13,550.63",,,  54.34,  1.29,,
+
+Disclosure
+"The data and information in this spreadsheet is provided to you solely for your use and is not for distribution. 
+The spreadsheet is provided for informational purposes only, and is not intended to provide advice, nor should it be construed as an offer to sell, a solicitation of an offer to buy or a recommendation for any security 
+or digital asset by Fidelity or any third party. Data and information shown is based on information known to Fidelity as of the date it was exported and is subject to change. 
+It should not be used in place of your account statements or trade confirmations and is not intended for tax reporting purposes. 
+For more information on the data included in this spreadsheet, including any limitations thereof, go to Fidelity.com.
+ 
+Brokerage services are provided by Fidelity Brokerage Services LLC (FBS), 900 Salem Street, Smithfield, RI 02917. Custody and other services provided by National Financial Services LLC (NFS). 
+Both are Fidelity Investment companies and members SIPC, NYSE. Neither FBS nor NFS offer crypto as a direct investment nor provide trading or custody services for such assets."
