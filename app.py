@@ -218,6 +218,8 @@ def load_positions() -> pd.DataFrame:
         return pd.DataFrame()
     df = pd.read_csv(path, dtype=str, index_col=False)
     df = _drop_unnamed(df)
+    # Normalize column names to title case (Fidelity changed from "Account Name" to "Account name")
+    df.columns = df.columns.str.title()
     df["Account Name"] = df["Account Name"].map(_normalize_account_label)
     df = df[df["Account Name"].isin(ALLOWED_ACCOUNTS)].copy()
     return df
