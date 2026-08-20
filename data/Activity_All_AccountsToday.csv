@@ -1,25 +1,21 @@
 ﻿"Activity 
 All Accounts 
-as of 08/15/2026 at 05:03:37 AM",,,,,,,,,,,
-,,,,,,,,,,,
+as of 08/19/2026 at 04:07:53 PM"
+
 Date,Activity Description,Quantity,Symbol,Price,Amount,Cash Balance,Description,Commission,Fees,Account,Type
-Aug-10-2026,YOU SOLD CLOSING TRANSACTION,-10,IGV260821C85,18.7,"18,694.60","1,721,646.11",CALL (IGV) ISHARES TR EXPANDED AUG 21 26 $85 (100 SHS),4.88,0.52,Limited Liability Company *9613,Margin
-Aug-10-2026,YOU BOUGHT CLOSING TRANSACTION,10,IGV260821C105,1.7,"-1,705.01","1,702,951.51",CALL (IGV) ISHARES TR EXPANDED AUG 21 26 $105 (100 SHS),4.88,0.13,Limited Liability Company *9613,Margin
-Aug-7-2026,YOU BOUGHT CLOSING TRANSACTION,25,GLD260918P335,0.45,"-1,125.33","1,704,656.52",PUT (GLD) SPDR GOLD TR GOLD SEP 18 26 $335 (100 SHS),--,0.33,Limited Liability Company *9613,Margin
-Aug-6-2026,YOU SOLD CLOSING TRANSACTION,-6,SPXW260806C7755,1.61,959.99,"1,698,539.06",CALL (SPXW) NEW S & P 500 INDEX AUG 06 26 $7755 (100 SHS),5.93,0.08,Limited Liability Company *9613,Margin
-Aug-6-2026,YOU BOUGHT OPENING TRANSACTION,4,SPXW260806C7735,5.79,"-2,320.00","1,697,579.07",CALL (SPXW) NEW S & P 500 INDEX AUG 06 26 $7735 (100 SHS),3.95,0.05,Limited Liability Company *9613,Margin
-Aug-6-2026,YOU SOLD CLOSING TRANSACTION,-4,SPXW260806C7735,0.57,224,"1,699,899.07",CALL (SPXW) NEW S & P 500 INDEX AUG 06 26 $7735 (100 SHS),3.95,0.05,Limited Liability Company *9613,Margin
-Aug-6-2026,YOU SOLD OPENING TRANSACTION,-10,SPXW260806C7745,2.07,"2,059.99","1,699,675.07",CALL (SPXW) NEW S & P 500 INDEX AUG 06 26 $7745 (100 SHS),9.88,0.13,Limited Liability Company *9613,Margin
-Aug-6-2026,YOU BOUGHT CLOSING TRANSACTION,5,SPXW260806C7785,0.25,-125.07,"1,697,615.08",CALL (SPXW) NEW S & P 500 INDEX AUG 06 26 $7785 (100 SHS),--,0.07,Limited Liability Company *9613,Margin
-Aug-6-2026,YOU BOUGHT OPENING TRANSACTION,4,SPXW260806C7715,3.57,"-1,432.00","1,697,740.15",CALL (SPXW) NEW S & P 500 INDEX AUG 06 26 $7715 (100 SHS),3.95,0.05,Limited Liability Company *9613,Margin
-Aug-6-2026,YOU SOLD OPENING TRANSACTION,-9,SPXW260806C7730,2.15,"1,925.99","1,699,172.15",CALL (SPXW) NEW S & P 500 INDEX AUG 06 26 $7730 (100 SHS),8.89,0.12,Limited Liability Company *9613,Margin
-Aug-6-2026,YOU BOUGHT OPENING TRANSACTION,6,SPXW260806C7710,8.6,"-5,166.01","1,697,246.16",CALL (SPXW) NEW S & P 500 INDEX AUG 06 26 $7710 (100 SHS),5.93,0.08,Limited Liability Company *9613,Margin
-Aug-6-2026,YOU BOUGHT OPENING TRANSACTION,5,SPXW260806C7725,7.49,"-3,750.01","1,702,412.17",CALL (SPXW) NEW S & P 500 INDEX AUG 06 26 $7725 (100 SHS),4.94,0.07,Limited Liability Company *9613,Margin
-Aug-6-2026,YOU SOLD OPENING TRANSACTION,-4,SPX261120C8350,41.52,"16,604.00","1,706,162.18",CALL (SPX) NEW S & P 500 INDEX NOV 20 26 $8350 (100 SHS),3.95,0.05,Limited Liability Company *9613,Margin
-Aug-6-2026,YOU BOUGHT OPENING TRANSACTION,2,SPX270617C8450,237.82,"-47,566.01","1,689,558.18",CALL (SPX) NEW S & P 500 INDEX JUN 17 27 $8450 (100 SHS),1.98,0.03,Limited Liability Company *9613,Margin
-Aug-6-2026,YOU SOLD CLOSING TRANSACTION,-2,SPX270319C8000,317.82,"63,561.99","1,737,124.19",CALL (SPX) NEW S & P 500 INDEX MAR 19 27 $8000 (100 SHS),1.98,0.03,Limited Liability Company *9613,Margin
-Aug-6-2026,YOU SOLD CLOSING TRANSACTION,-4,SPX270319C8000,312.07,"124,824.00","1,673,562.20",CALL (SPX) NEW S & P 500 INDEX MAR 19 27 $8000 (100 SHS),3.95,0.05,Limited Liability Company *9613,Margin
-Aug-6-2026,YOU SOLD CLOSING TRANSACTION,-3,SPX270319C8100,261.94,"78,579.00","1,548,738.20",CALL (SPX) NEW S & P 500 INDEX MAR 19 27 $8100 (100 SHS),2.96,0.04,Limited Liability Company *9613,Margin
-Aug-6-2026,YOU BOUGHT CLOSING TRANSACTION,4,SPX260821C7650,119.62,"-47,852.00","1,470,159.20",CALL (SPX) NEW S & P 500 INDEX AUG 21 26 $7650 (100 SHS),3.95,0.05,Limited Liability Company *9613,Margin
-Aug-6-2026,YOU BOUGHT OPENING TRANSACTION,4,SPX270617C8500,216.07,"-86,432.00","1,518,011.20",CALL (SPX) NEW S & P 500 INDEX JUN 17 27 $8500 (100 SHS),3.95,0.05,Limited Liability Company *9613,Margin
-Aug-6-2026,YOU BOUGHT OPENING TRANSACTION,3,SPX270617C8400,251.94,"-75,585.00","1,604,443.20",CALL (SPX) NEW S & P 500 INDEX JUN 17 27 $8400 (100 SHS),2.96,0.04,Limited Liability Company *9613,Margin
+Aug-19-2026,YOU BOUGHT,100,SPMO,149.16,"-14,916.00",Processing,INVESCO EXCH TRADED FD TR II S&P 500 MOMNTM,--,--,Limited Liability Company *9613,Cash
+Aug-19-2026,YOU BOUGHT,50,MTUM,307.28,"-15,364.00",Processing,ISHARES TR MSCI USA MMENTM,--,--,Limited Liability Company *9613,Cash
+Aug-19-2026,YOU SOLD OPENING TRANSACTION,-20,GOOG261218C405,8.07,"16,129.64",Processing,CALL (GOOG) ALPHABET INC CAP STK DEC 18 26 $405 (100 SHS),9.75,0.61,Limited Liability Company *9613,Margin
+Aug-19-2026,YOU SOLD OPENING TRANSACTION,-20,GOOG261218P275,3.75,"7,489.82",Processing,PUT (GOOG) ALPHABET INC CAP STK DEC 18 26 $275 (100 SHS),9.75,0.43,Limited Liability Company *9613,Margin
+Aug-19-2026,YOU BOUGHT OPENING TRANSACTION,20,GOOG261218P315,12.07,"-24,150.02",Processing,PUT (GOOG) ALPHABET INC CAP STK DEC 18 26 $315 (100 SHS),9.75,0.27,Limited Liability Company *9613,Margin
+,Totals,,,,"  -30,810.56",,,  29.25,  1.31,,
+
+Disclosure
+"The data and information in this spreadsheet is provided to you solely for your use and is not for distribution. 
+The spreadsheet is provided for informational purposes only, and is not intended to provide advice, nor should it be construed as an offer to sell, a solicitation of an offer to buy or a recommendation for any security 
+or digital asset by Fidelity or any third party. Data and information shown is based on information known to Fidelity as of the date it was exported and is subject to change. 
+It should not be used in place of your account statements or trade confirmations and is not intended for tax reporting purposes. 
+For more information on the data included in this spreadsheet, including any limitations thereof, go to Fidelity.com.
+ 
+Brokerage services are provided by Fidelity Brokerage Services LLC (FBS), 900 Salem Street, Smithfield, RI 02917. Custody and other services provided by National Financial Services LLC (NFS). 
+Both are Fidelity Investment companies and members SIPC, NYSE. Neither FBS nor NFS offer crypto as a direct investment nor provide trading or custody services for such assets."
