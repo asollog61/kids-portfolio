@@ -1,0 +1,30 @@
+﻿"Activity 
+All Accounts 
+as of 06/12/2026 at 04:01:37 PM"
+
+Date,Description,Quantity,Symbol,Price,Amount,Cash Balance,Security Description,Commission,Fees,Account,Type
+Jun-12-2026,YOU BOUGHT OPENING TRANSACTION,100,VIX260617C20.5,0.29,"-2,981.05",Processing,CALL (VIX) CBOE MKT VOLATILITY JUN 17 26 $20.5 (100 SHS),78.75,2.30,Limited Liability Company *9613,Margin
+Jun-12-2026,YOU SOLD CLOSING TRANSACTION,-100,VIX260617C22,0.21,"2,018.95",Processing,CALL (VIX) CBOE MKT VOLATILITY JUN 17 26 $22 (100 SHS),78.75,2.30,Limited Liability Company *9613,Margin
+Jun-12-2026,YOU SOLD CLOSING TRANSACTION,-2,SPXW260612C7400,34.65,"6,927.97",Processing,CALL (SPXW) NEW S & P 500 INDEX JUN 12 26 $7400 (100 SHS),1.98,0.05,Limited Liability Company *9613,Margin
+Jun-12-2026,YOU BOUGHT OPENING TRANSACTION,2,SPXW260612C7465,1.30,-262.03,Processing,CALL (SPXW) NEW S & P 500 INDEX JUN 12 26 $7465 (100 SHS),1.98,0.05,Limited Liability Company *9613,Margin
+Jun-12-2026,YOU BOUGHT CLOSING TRANSACTION,2,SPXW260612C7450,3.35,-672.03,Processing,CALL (SPXW) NEW S & P 500 INDEX JUN 12 26 $7450 (100 SHS),1.98,0.05,Limited Liability Company *9613,Margin
+Jun-12-2026,YOU SOLD CLOSING TRANSACTION,-100,VIX260617C22,0.22,"2,118.95",Processing,CALL (VIX) CBOE MKT VOLATILITY JUN 17 26 $22 (100 SHS),78.75,2.30,Limited Liability Company *9613,Margin
+Jun-12-2026,YOU BOUGHT OPENING TRANSACTION,100,VIX260617C20.5,0.32,"-3,281.05",Processing,CALL (VIX) CBOE MKT VOLATILITY JUN 17 26 $20.5 (100 SHS),78.75,2.30,Limited Liability Company *9613,Margin
+Jun-12-2026,YOU BOUGHT CLOSING TRANSACTION,2,SPXW260612C7425,11.30,"-2,262.03",Processing,CALL (SPXW) NEW S & P 500 INDEX JUN 12 26 $7425 (100 SHS),1.98,0.05,Limited Liability Company *9613,Margin
+Jun-12-2026,YOU SOLD OPENING TRANSACTION,-2,SPX260918C8000,46.30,"9,257.97",Processing,CALL (SPX) NEW S & P 500 INDEX SEP 18 26 $8000 (100 SHS),1.98,0.05,Limited Liability Company *9613,Margin
+Jun-12-2026,YOU BOUGHT CLOSING TRANSACTION ASSIGNED CALLS AS OF 06-11-26,6,SPXW260611C7345,49.30,"-29,580.00",Processing,CALL (SPXW) NEW S & P 500 INDEX JUN 11 26 $7345 (100 SHS),--,--,Limited Liability Company *9613,Margin
+Jun-12-2026,YOU BOUGHT CLOSING TRANSACTION ASSIGNED CALLS AS OF 06-11-26,3,SPXW260611C7375,19.30,"-5,790.00",Processing,CALL (SPXW) NEW S & P 500 INDEX JUN 11 26 $7375 (100 SHS),--,--,Limited Liability Company *9613,Margin
+Jun-12-2026,YOU SOLD CLOSING TRANSACTION EXERCISED CALLS AS OF 06-11-26,-3,SPXW260611C7320,74.30,"22,290.00",Processing,CALL (SPXW) NEW S & P 500 INDEX JUN 11 26 $7320 (100 SHS),--,--,Limited Liability Company *9613,Margin
+Jun-12-2026,YOU SOLD CLOSING TRANSACTION EXERCISED CALLS AS OF 06-11-26,-3,SPXW260611C7335,59.30,"17,790.00",Processing,CALL (SPXW) NEW S & P 500 INDEX JUN 11 26 $7335 (100 SHS),--,--,Limited Liability Company *9613,Margin
+Jun-12-2026,YOU BOUGHT CLOSING TRANSACTION ASSIGNED CALLS AS OF 06-11-26,3,SPXW260611C7370,24.30,"-7,290.00",Processing,CALL (SPXW) NEW S & P 500 INDEX JUN 11 26 $7370 (100 SHS),--,--,Limited Liability Company *9613,Margin
+,Totals,,,,"  8,285.65",,,  324.90,  9.45,,
+
+Disclosure
+"The data and information in this spreadsheet is provided to you solely for your use and is not for distribution. 
+The spreadsheet is provided for informational purposes only, and is not intended to provide advice, nor should it be construed as an offer to sell, a solicitation of an offer to buy or a recommendation for any security 
+or digital asset by Fidelity or any third party. Data and information shown is based on information known to Fidelity as of the date it was exported and is subject to change. 
+It should not be used in place of your account statements or trade confirmations and is not intended for tax reporting purposes. 
+For more information on the data included in this spreadsheet, including any limitations thereof, go to Fidelity.com.
+ 
+Brokerage services are provided by Fidelity Brokerage Services LLC (FBS), 900 Salem Street, Smithfield, RI 02917. Custody and other services provided by National Financial Services LLC (NFS). 
+Both are Fidelity Investment companies and members SIPC, NYSE. Neither FBS nor NFS offer crypto as a direct investment nor provide trading or custody services for such assets."
