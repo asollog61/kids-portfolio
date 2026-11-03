@@ -1,13 +1,11 @@
 ﻿"Activity 
 All Accounts 
-as of 10/30/2026 at 02:30:46 PM"
+as of 11/02/2026 at 12:05:23 PM"
 
 Date,Activity Description,Quantity,Symbol,Price,Amount,Cash Balance,Description,Commission,Fees,Account,Type
-Oct-30-2026,YOU BOUGHT CLOSING TRANSACTION,5,SPX261120C8350,0.25,-125.07,Processing,CALL (SPX) NEW S & P 500 INDEX NOV 20 26 $8350 (100 SHS),--,0.07,Limited Liability Company *9613,Margin
-Oct-30-2026,YOU SOLD CLOSING TRANSACTION,-10,SPX270820C8500,165.61,"165,599.99",Processing,CALL (SPX) NEW S & P 500 INDEX AUG 20 27 $8500 (100 SHS),9.88,0.13,Limited Liability Company *9613,Margin
-Oct-30-2026,YOU BOUGHT OPENING TRANSACTION,10,SPX270820C8475,173.41,"-173,420.01",Processing,CALL (SPX) NEW S & P 500 INDEX AUG 20 27 $8475 (100 SHS),9.88,0.13,Limited Liability Company *9613,Margin
-Oct-30-2026,YOU BOUGHT,552,GLD,361.54,"-199,570.08",Processing,SPDR GOLD TR GOLD SHS,--,--,Limited Liability Company *9613,Cash
-,Totals,,,,"  -207,515.17",,,  19.76,  0.33,,
+Nov-2-2026,YOU BOUGHT 26304JN5AW,"2,247",SLV,45.855,"-103,036.19",Processing,ISHARES SILVER TR ISHARES,--,--,Limited Liability Company *9613,Cash
+Nov-2-2026,YOU BOUGHT 26304JN558,"1,385",COPX,73.28,"-101,492.80",Processing,GLOBAL X FDS GLOBAL X COPPER,--,--,Limited Liability Company *9613,Cash
+,Totals,,,,"  -204,528.99",,,  0.00,  0.00,,
 
 
 Disclosure
